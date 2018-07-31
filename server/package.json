@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "The Expand Team",
+  "contributors": [
+    "Abraham Hamidi"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.283.1",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3"
+  }
+}
