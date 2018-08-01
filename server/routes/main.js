@@ -38,7 +38,7 @@ router.get('/user', function (req, res) {
         if (err) {
             res.status(500).send(err);
         } else {
-            res.status(200).send(doc);
+            res.status(200).json(doc);
         }
     });
 });

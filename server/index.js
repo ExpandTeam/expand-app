@@ -23,6 +23,6 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/', main);
+app.use('/api/', main);
 
 app.listen(process.env.PORT || 3000);
