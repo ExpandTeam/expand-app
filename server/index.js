@@ -1,44 +1,28 @@
 require('dotenv').config();
-const AWS = require('aws-sdk');
-AWS.config.update({ region: 'us-east-2' });
-const ddb = new AWS.DynamoDB();
+
 const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
+
+const main = require('./routes/main');
+const models = require('./models/models');
+
 const app = express();
 
-app.get('/api/users/:address', function (req, res) {
-    const params = {
-        TableName: 'Users',
-        Key: {
-            Address: {
-                S: req.params.address,
-            },
-        },
-        ProjectionExpression: 'Username',
-    };
-    ddb.getItem(params, function (err, data) {
-        if (err) {
-            res.status(500).send(err);
-        } else {
-            res.json(data.Item.Username.S);
-        }
-    });
+
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    dbName: "expand-cache",
+    auth: {
+        user: "expand-cache",
+        password: process.env.MONGODB_PASSWORD
+    }
+}).catch((err) => {
+    console.log(err);
 });
 
-app.get('/api/articles', function (req, res) {
-    // const sortBy = req.query.sortBy;
-    const ascending = req.query.sortOrder == "ascending" ? true : false;
-    const params = {
-        TableName: 'Articles',
-        // IndexName: sortBy,
-        Limit: 5,
-    };
-    ddb.scan(params, function (err, data) {
-        if (err) {
-            res.status(500).send(err);
-        } else {
-            res.json(data);
-        }
-    });
-});
+app.use(bodyParser.urlencoded({extended: false}));
 
-app.listen(3000);
+app.use('/', main);
+
+app.listen(process.env.PORT || 3000);
