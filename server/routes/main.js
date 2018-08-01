@@ -7,7 +7,6 @@ const User = models.User
 
 let router = express.Router();
 
-
 router.post('/user/update', function (req, res) {
     const data = [{
         type: 'string',
@@ -33,5 +32,15 @@ router.post('/user/update', function (req, res) {
     });
 });
 
+router.get('/user', function (req, res) {
+    const address = req.query.address;
+    User.findById(address, function (err, doc) {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(200).send(doc);
+        }
+    });
+});
 
 module.exports = router;
