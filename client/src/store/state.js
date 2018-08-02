@@ -8,5 +8,8 @@ let state = {
         error: null,
     },
     contractInstance: null,
+    user: {
+        displayName: null,
+    },
 };
 export default state;

@@ -6,11 +6,16 @@ import getWeb3 from '../util/get-web3';
 Vue.use(Vuex);
 
 function registerWeb3 ({ commit }) {
-    getWeb3.then(result => {
-        commit('registerWeb3Instance', result);
-    }).catch(e => {
-        console.log('error in action registerWeb3', e);
-    });
+    getWeb3
+        .then((result) => {
+            commit('registerWeb3Instance', result);
+        })
+        .then(getUserInfo)
+        .then((user) => {
+            commit('setUserInfo', user);
+        }).catch((e) => {
+            console.error(e);
+        });
 }
 
 function registerWeb3Instance (state, payload) {
@@ -24,9 +29,26 @@ function registerWeb3Instance (state, payload) {
     state.web3 = web3Copy;
 }
 
+function getUserInfo () {
+    return fetch(process.env.ROOT_API + '/user?address=' + state.web3.coinbase)
+        .then((res) => {
+            return res.json();
+        });
+}
+
+function setUserInfo (state, userInfo) {
+    if (userInfo) {
+        state.user = userInfo;
+    } else {
+        state.user = {
+            displayName: state.web3.coinbase,
+        };
+    }
+}
+
 export const store = new Vuex.Store({
     strict: true,
     state,
-    mutations: { registerWeb3Instance },
+    mutations: { registerWeb3Instance, setUserInfo },
     actions: { registerWeb3 },
 });
