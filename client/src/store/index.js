@@ -38,7 +38,9 @@ function getUserInfo () {
 
 function setUserInfo (state, userInfo) {
     if (userInfo) {
-        state.user = userInfo;
+        state.user = {
+            displayName: userInfo.username,
+        };
     } else {
         state.user = {
             displayName: state.web3.coinbase,
