@@ -3,7 +3,7 @@
         <h2>Settings</h2>
         <div>
             <label>Display Name</label>
-            <input type="text" v-model="displayName" />
+            <input type="text" v-model="user.displayName" />
         </div>
         <button v-on:click="updateMappings">Update</button>
     </div>
@@ -35,7 +35,7 @@ export default {
     },
     data () {
         return {
-            displayName: this.$store.state.web3.coinbase,
+            user: this.$store.state.user,
         };
     },
 };
