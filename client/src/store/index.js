@@ -52,5 +52,5 @@ export const store = new Vuex.Store({
     strict: true,
     state,
     mutations: { registerWeb3Instance, setUserInfo },
-    actions: { registerWeb3 },
+    actions: { registerWeb3, getUserInfo },
 });

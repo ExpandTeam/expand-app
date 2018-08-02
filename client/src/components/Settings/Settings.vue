@@ -3,7 +3,7 @@
         <h2>Settings</h2>
         <div>
             <label>Display Name</label>
-            <input type="text" v-model="user.displayName" />
+            <input type="text" v-model="displayName" />
         </div>
         <button v-on:click="updateMappings">Update</button>
     </div>
@@ -25,17 +25,33 @@ export default {
                 method: 'eth_signTypedData',
                 params: [msgParams, web3.coinbase],
                 from: web3.coinbase,
-            }, function (err, result) {
+            }, (err, result) => {
                 if (err) {
                     return console.error(err);
+                } else {
+                    this.$http.post(
+                        process.env.ROOT_API + '/user/update', {
+                            signed: result.result,
+                            username: this.displayName,
+                        }, {
+                            emulateJSON: true,
+                        },
+                    ).then(() => {
+                        this.$store.dispatch('getUserInfo')
+                            .then((userInfo) => {
+                                this.$store.commit('setUserInfo', userInfo);
+                            });
+                    }).catch((err) => {
+                        console.error(err);
+                    });
                 }
-                console.log(result);
             });
         },
     },
     data () {
         return {
             user: this.$store.state.user,
+            displayName: this.$store.state.user.displayName,
         };
     },
 };
