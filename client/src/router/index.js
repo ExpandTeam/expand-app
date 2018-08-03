@@ -5,6 +5,7 @@ import About from '@/components/About/About';
 import Settings from '@/components/Settings/Settings';
 import Editor from '@/components/Editor/Editor';
 import ArticleView from '@/components/ArticleView/ArticleView';
+import Faucet from '@/components/Faucet/Faucet';
 
 Vue.use(Router);
 
@@ -34,6 +35,11 @@ export default new Router({
             path: '/view/:address',
             name: 'ArticleView',
             component: ArticleView,
+        },
+        {
+            path: '/faucet',
+            name: 'Faucet',
+            component: Faucet,
         },
     ],
 });

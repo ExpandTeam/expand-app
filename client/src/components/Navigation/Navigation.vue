@@ -4,6 +4,7 @@
     <router-link to="/">Home</router-link>
     <router-link to="/about">About</router-link>
     <router-link to="/editor">Create</router-link>
+    <router-link to="/faucet">Faucet</router-link>
     <router-link to="/settings" v-if="web3.isInjected" class="item-right">{{ user.displayName }}</router-link>
     <a v-else class="item-right">Not authenticated</a>
   </nav>

@@ -20,9 +20,9 @@ import 'quill/dist/quill.snow.css';
 import articleInfo from '@/../../truffle/build/contracts/Article';
 
 export default {
+    name: 'Editor',
     data () {
         return {
-            name: 'Editor',
             editorOption: {},
             content: '',
             title: '',
