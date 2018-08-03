@@ -27,15 +27,15 @@ export default {
             content: '',
             title: '',
             web3: this.$store.state.web3,
-            web3Instance: this.$store.state.web3.web3Instance(),
             error: '',
         };
     },
     methods: {
         onSave () {
+            const web3Instance = this._data.web3.web3Instance();
             this._data.web3.bzz.upload(this._data.content)
                 .then((hash) => {
-                    const Article = new this._data.web3Instance.eth.Contract(articleInfo.abi);
+                    const Article = new web3Instance.eth.Contract(articleInfo.abi);
                     const contractArgs = [this._data.title, hash];
                     const deployedArticle = Article.deploy({
                         data: articleInfo.bytecode,
@@ -46,7 +46,7 @@ export default {
                             if (err) {
                                 console.error(err);
                             } else {
-                                this._data.web3Instance.eth.getGasPrice((err, gasPrice) => {
+                                web3Instance.eth.getGasPrice((err, gasPrice) => {
                                     if (err) {
                                         console.error(err);
                                     } else {
