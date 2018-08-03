@@ -56,7 +56,6 @@ router.post('/article/update', (req, res) => {
     const contract = new web3.eth.Contract(articleInfo.abi, address);
     contract.methods.hash().call()
         .then((hash) => {
-            console.log(hash);
             return web3.bzz.download(hash);
         })
         .then((body) => {
