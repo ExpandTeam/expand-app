@@ -27,7 +27,7 @@ router.post('/user/update', (req, res) => {
 
     const sig = req.body.signed;
 
-    let address = sigUtil.recoverTypedSignatureLegacy({ data, sig });
+    let address = sigUtil.recoverTypedSignatureLegacy({ data, sig }).toLowerCase();
 
     const newUser = new User({
         _id: address,
@@ -44,7 +44,7 @@ router.post('/user/update', (req, res) => {
 });
 
 router.get('/user', (req, res) => {
-    const address = req.query.address;
+    const address = req.query.address.toLowerCase();
     User.findById(address, function (err, doc) {
         if (err) {
             res.status(500).send(err);
@@ -55,7 +55,7 @@ router.get('/user', (req, res) => {
 });
 
 router.post('/article/update', (req, res) => {
-    const address = req.body.address;
+    const address = req.body.address.toLowerCase();
     const contract = new web3.eth.Contract(articleInfo.abi, address);
     contract.methods.hash().call()
         .then((hash) => {
