@@ -13,11 +13,12 @@ const app = express();
 const whitelist = ['https://expand.land', 'http://localhost:8080'];
 const corsOptions = {
     origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) != -1) {
+        callback(null, true);
+        /*if (whitelist.indexOf(origin) != -1) {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
-        }
+        }*/
     }
 };
 
@@ -26,8 +27,9 @@ mongoose.connect(process.env.MONGODB_URI, {
     dbName: "expand-cache",
     auth: {
         user: "expand-cache",
-        password: process.env.MONGODB_PASSWORD
-    }
+        password: process.env.MONGODB_PASSWORD,
+    },
+    autoIndex: false,
 }).catch((err) => {
     console.log(err);
 });

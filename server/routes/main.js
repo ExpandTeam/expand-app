@@ -80,7 +80,7 @@ router.post('/article/update', (req, res) => {
                             res.status(500).send("newArticle could not be saved");
                         } else {
                             console.log("Article added to database");
-                            res.status(200).json(body);
+                            res.status(200).json(h2p(body));
                         }
                     }));
                 })
@@ -92,5 +92,40 @@ router.post('/article/update', (req, res) => {
             console.log(err);
         });
 });
+
+router.get('/article', (req, res) => {
+    const numArticlesOnPage = 5;
+
+    if( !(req.query.search && typeof req.query.search === 'string')) {
+        res.status(400).send("request must have search query");
+        return;
+    }
+
+
+    Article
+        .find({})
+        .where([]).in(['title', 'body'])
+        .skip(numArticlesOnPage * (pageNumber - 1))
+        .limit(numArticlesOnPage)
+        .populate('owner')
+        .exec(function(err, results) {
+            if(err) {
+                console.log(err);
+                res.status(500).send('unable to get articles');
+                return;
+            }
+
+            const paredArticles = articles.map((article) => (
+                {
+                    address: article._id,
+                    title: article.title,
+                    authorName: article.owner.displayName,
+                }
+            ));
+            res.status(200).json(paredArticles);
+        });
+
+})
+
 
 module.exports = router;
