@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import state from './state';
 import getWeb3 from '../util/get-web3';
+import Buzz from '@web3/buzz';
 
 Vue.use(Vuex);
 
@@ -26,6 +27,7 @@ function registerWeb3Instance (state, payload) {
     web3Copy.balance = parseInt(result.balance, 10);
     web3Copy.isInjected = result.injectedWeb3;
     web3Copy.web3Instance = result.web3;
+    web3Copy.bzz = new Buzz({ provider: process.env.SWARM_ENDPOINT });
     state.web3 = web3Copy;
 }
 
