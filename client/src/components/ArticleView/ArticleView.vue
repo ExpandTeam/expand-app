@@ -6,11 +6,13 @@
             <div v-html="article.body"></div>
         </div>
         <h4>E: {{ article.eAmount }}</h4>
+        <button v-on:click="giveExpand()">Give 1 ExpandCoin</button>
     </div>
 </template>
 
 <script>
 import articleInfo from '@/../../truffle/build/contracts/Article';
+import expandTokenInfo from '@/../../truffle/build/contracts/ExpandToken';
 
 export default {
     name: 'ArticleView',
@@ -39,6 +41,27 @@ export default {
         },
     },
     methods: {
+        giveExpand () {
+            const web3Instance = this.web3.web3Instance();
+            const expandTokenContract = new web3Instance.eth.Contract(expandTokenInfo.abi, process.env.EXPAND_CONTRACT_ADDRESS);
+            const articleContract = new web3Instance.eth.Contract(articleInfo.abi, this.$route.params.address);
+
+            articleContract.methods.owner().call().then((author) => {
+                expandTokenContract.methods.approve(author, Math.pow(10, 18))
+                    .send({ from: this.web3.coinbase })
+                    .then((res) => {
+                        articleContract.methods.give(Math.pow(10, 18), process.env.EXPAND_CONTRACT_ADDRESS)
+                            .send({ from: this.web3.coinbase })
+                            .then((res) => {
+                                console.log(res);
+                            }).catch((err) => {
+                                console.error(err);
+                            });
+                    }).catch((err) => {
+                        console.log(err);
+                    });
+            });
+        },
         updateArticle () {
             const web3 = this.$store.state.web3;
             const web3Instance = web3.web3Instance();
@@ -52,12 +75,13 @@ export default {
                     const infoPromises = [
                         contract.methods.title().call(),
                         contract.methods.owner().call(),
+                        contract.methods.amount().call(),
                     ];
                     return Promise.all(infoPromises)
                         .then((results) => {
                             const title = results[0];
                             let author = results[1];
-                            console.log(author);
+                            const amount = results[2];
                             return fetch(process.env.ROOT_API + '/user?address=' + author)
                                 .then((user) => {
                                     return user.json();
@@ -70,7 +94,7 @@ export default {
                                         title,
                                         author,
                                         body: Buffer.from(body).toString('utf8'),
-                                        eAmount: 2,
+                                        eAmount: amount,
                                     };
                                 });
                         });

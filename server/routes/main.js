@@ -34,7 +34,7 @@ router.post('/user/update', (req, res) => {
         username: req.body.username,
     });
 
-    User.findByIdAndUpdate(newUser._id, newUser, { upsert: true }, (err) => {
+    User.findByIdAndUpdate(address, newUser, { upsert: true }, (err) => {
         if (err) {
             res.status(500).send(err);
         } else {
@@ -74,7 +74,7 @@ router.post('/article/update', (req, res) => {
 
                     let upsertData = newArticle.toObject();
 
-                    Article.findByIdAndUpdate(req.body.address, upsertData, {upsert: true}, ((err) => {
+                    Article.findByIdAndUpdate(newArticle._id, newArticle, {upsert: true}, ((err) => {
                         if (err) {
                             console.log(err);
                             res.status(500).send("newArticle could not be saved");

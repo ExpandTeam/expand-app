@@ -21,7 +21,6 @@ export default {
         takeExpand (amount) {
             const web3Instance = this._data.web3.web3Instance();
             const contract = new web3Instance.eth.Contract(expandTokenInfo.abi, process.env.EXPAND_CONTRACT_ADDRESS);
-            console.log(contract.methods);
             contract.methods.getTokens(amount * Math.pow(10, 18)).send({ from: this._data.web3.coinbase })
                 .then((resp) => {
                     this._data.result = 'Success';
