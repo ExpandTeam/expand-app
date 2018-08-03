@@ -6,7 +6,9 @@ const sigUtil = require('eth-sig-util');
 const h2p = require('html2plaintext');
 
 const Web3 = require('web3'); const web3 = new Web3(new Web3.providers.HttpProvider(process.env.PROVIDER_URI));
-web3.bzz.setProvider(process.env.SWARM_ENDPOINT);
+
+const Buzz = require('@web3/buzz');
+const bzz = new Buzz({ provider: process.env.SWARM_ENDPOINT });
 
 const models = require('../models/models');
 const User = models.User;
@@ -56,9 +58,10 @@ router.post('/article/update', (req, res) => {
     const contract = new web3.eth.Contract(articleInfo.abi, address);
     contract.methods.hash().call()
         .then((hash) => {
-            return web3.bzz.download(hash);
+            return bzz.download(hash);
         })
         .then((body) => {
+            body = Buffer.from(body).toString('utf8');
             Promise.all([contract.methods.title().call(), contract.methods.owner().call()])
                 .then((contractData) => {
                     let newArticle = new Article({
