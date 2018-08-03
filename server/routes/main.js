@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const sigUtil = require('eth-sig-util');
 const h2p = require('html2plaintext');
 
-const Web3 = require('web3'); const web3 = new Web3(new Web3.providers.HttpProvider(process.env.PROVIDER_URI));
+const Web3 = require('web3');
+const web3 = new Web3(new Web3.providers.HttpProvider(process.env.PROVIDER_URI));
 
 const Buzz = require('@web3/buzz');
 const bzz = new Buzz({ provider: process.env.SWARM_ENDPOINT });

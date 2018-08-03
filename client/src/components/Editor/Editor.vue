@@ -63,7 +63,7 @@ export default {
                                                         emulateJSON: true,
                                                     }
                                                 ).then(() => {
-                                                    console.log("yay");
+                                                    this.$router.push('/view/' + newContractInstance._address);
                                                 }).catch((err) => {
                                                     this._data.error = err.toString();
                                                 });

@@ -19,6 +19,7 @@
   "dependencies": {
     "@web3/buzz": "0.0.1",
     "vue": "^2.5.2",
+    "vue-async-computed": "^3.3.1",
     "vue-quill-editor": "^3.0.6",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",

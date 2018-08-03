@@ -4,6 +4,7 @@ import Home from '@/components/Home/Home';
 import About from '@/components/About/About';
 import Settings from '@/components/Settings/Settings';
 import Editor from '@/components/Editor/Editor';
+import ArticleView from '@/components/ArticleView/ArticleView';
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
             path: '/editor',
             name: 'Editor',
             component: Editor,
+        },
+        {
+            path: '/view/:address',
+            name: 'ArticleView',
+            component: ArticleView,
         },
     ],
 });
