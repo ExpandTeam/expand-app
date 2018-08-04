@@ -1,0 +1,52 @@
+<template>
+    <div class="w3-container w3-light-grey" style="padding: 10px; margin-top:10vh;">
+        <form action="url" method="get">
+            <input class="w3-input" type='text' v-model="searchquery" placeholder="search query"/>
+            <br>
+            <button class="w3-button w3-green" type='button' v-on:click="search(searchquery)">Search</button>
+        </form>
+        <ul class="w3-ul">
+            <li v-for="{author, title, address} in results" v-bind:key="address">
+                <div class="element">
+                    <h5>Author: {{author}}</h5>
+                    <h5><em>{{title}}</em></h5>
+                    <router-link :to="{path:'view/' + address}"> view </router-link>
+                </div>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<style>
+    .element {
+        padding: 10;
+    }
+</style>
+
+<script>
+/* eslint-disable */
+
+export default {
+  name: 'Search',
+  data () {
+      return {
+          searchquery: "",
+          results: [],
+      };
+  },
+  methods: {
+      search(query) {
+          fetch('http://localhost:3000/api/article?search=' + query)
+            .then((resp) => {
+              return resp.json();
+            })
+            .then((respJson) => {
+              console.log(respJson);
+              this._data.results = respJson;
+            })
+
+          //this._data.results = dummyData; //replace this
+      }
+  },
+}
+</script>

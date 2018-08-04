@@ -1,11 +1,11 @@
 <template>
-    <div v-if="web3.isInjected">
-      <p>Metamask: {{ web3.isInjected }}</p>
-      <p>Network: {{ web3.networkId }}</p>
-      <p>Account: {{ web3.coinbase }}</p>
-      <p>Balance: {{ web3.balance }}</p>
-    </div>
-    <h1 v-else>Sign in to Metamask and refresh the page</h1>
+  <div class="w3-container w3-black w3-display-middle" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); ">
+    <h1 class="w3-blue w3-center" style="padding: 5px;"><b>e x p a n d</b></h1>
+    <p class="w3-center">The most powerful website for posting articles.</p>
+    <em>Expand yourself.</em>
+    <br>
+    <br>
+  </div>
 </template>
 
 <script>

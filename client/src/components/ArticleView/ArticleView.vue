@@ -1,10 +1,8 @@
 <template>
-    <div v-if="web3.isInjected">
-        <div style="border: 1px solid">
+    <div v-if="web3.isInjected" class="w3-display-middle w3-container w3-light-grey w3-center" style="padding: 10px;">
             <h2>{{ article.title }}</h2>
             <p>by {{ article.author }}</p>
             <div v-html="article.body"></div>
-        </div>
         <h4>E: {{ article.eAmount }}</h4>
         <button v-on:click="giveExpand()">Give 1 ExpandCoin</button>
     </div>
