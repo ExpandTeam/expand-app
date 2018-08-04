@@ -18,6 +18,8 @@ const Article = models.Article;
 const articleInfo = require('../../truffle/build/contracts/Article');
 let router = express.Router();
 
+let index = require('../algolia/algolia');
+
 router.post('/user/update', (req, res) => {
     const data = [{
         type: 'string',
@@ -54,6 +56,29 @@ router.get('/user', (req, res) => {
     });
 });
 
+router.get('/article', (req, res) => {
+    index.search(
+        {
+            query: req.query.search,
+            attributesToRetrieve: ['title', 'owner', '_id', 'body'],
+            hitsPerPage: 10,
+        },
+        function searchDone(err, content) {
+            if (err) {
+                console.log(err);
+                res.status(500).send("unable to search");
+                return;
+            };
+
+
+            const { hits } = content;
+            console.log(hits);
+            res.status(200).json(hits.map((hit) => ({address: hit._id, owner: hit.owner, title: hit.title, body: hit.body})));
+
+        }
+    );
+})
+
 router.post('/article/update', (req, res) => {
     const address = req.body.address.toLowerCase();
     const contract = new web3.eth.Contract(articleInfo.abi, address);
@@ -80,6 +105,13 @@ router.post('/article/update', (req, res) => {
                             res.status(500).send("newArticle could not be saved");
                         } else {
                             console.log("Article added to database");
+                            index.addObject(upsertData, (err) => {
+                                if(err){
+                                    throw err
+                                } else {
+                                    console.log("Article added to algolia")
+                                }
+                            });
                             res.status(200).json(body);
                         }
                     }));
