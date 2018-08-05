@@ -7,7 +7,7 @@
        <img src="https://i.imgur.com/njETEMh.jpg" alt="Person" style="width: 20vh; height: 20vh; border-radius: 75px;">
        <div class="w3-container">
           <h4><b>Abraham Hamidi</b></h4>
-          <p>ExpandTeam founder and lead programmer</p>
+          <p>ExpandTeam founder and lead full stack developer</p>
           <em>Chief Expansionary</em> <br> <br>
        </div>
     </div>
@@ -15,7 +15,7 @@
        <img src="https://pbs.twimg.com/profile_images/998330277570068480/y5VH9ac1_400x400.jpg" alt="Person" style="width: 20vh; height: 20vh; border-radius: 75px;">
        <div class="w3-container">
           <h4><b>Josiah Somani</b></h4>
-          <p>ExpandTeam lead design / client side</p>
+          <p>ExpandTeam lead content strategist and frontend developer</p>
           <em>"eslint is bad"</em> <br> <br>
        </div>
     </div>
@@ -23,16 +23,16 @@
        <img src="https://cdn.discordapp.com/attachments/227522189438615554/474804098332491786/IMG_20180802_220055.jpg" alt="Person" style="width: 20vh; height: 20vh; border-radius: 75px;">
        <div class="w3-container">
           <h4><b>Nathan Peters</b></h4>
-          <p>ExpandTeam design senior junior developer</p>
-          <em>Emotional support</em> <br> <br>
+          <p>ExpandTeam interaction designer</p>
+          <em>emotional support</em> <br> <br>
        </div>
     </div>
     <div class="w3-quarter w3-center">
        <img src="https://i.imgur.com/MjXIAaT.jpg" alt="Person" style="width: 20vh; height: 20vh; border-radius: 75px;">
        <div class="w3-container">
           <h4><b>Ryan Marquess</b></h4>
-          <p>ExpandTeam lead backend programmer</p>
-          <em>Previously worked at <b>Unity Biotech</b></em> <br> <br>
+          <p>ExpandTeam lead backend developer and fullstack developer</p>
+          <em>"hello"</em> <br> <br>
        </div>
     </div>
  </div>
