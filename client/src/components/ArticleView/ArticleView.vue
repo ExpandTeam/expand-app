@@ -4,7 +4,7 @@
             <p>by {{ article.author }}</p>
             <div v-html="article.body"></div>
         <h4>E: {{ article.eAmount }}</h4>
-        <button v-on:click="giveExpand()">Give 1 ExpandCoin</button>
+        <button disabled v-on:click="giveExpand()">Give 1 ExpandCoin (soon)</button>
     </div>
 </template>
 

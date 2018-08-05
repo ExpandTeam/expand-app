@@ -27,25 +27,23 @@
 /* eslint-disable */
 
 export default {
-  name: 'Search',
-  data () {
-      return {
-          searchquery: "",
-          results: [],
-      };
-  },
-  methods: {
-      search(query) {
-          fetch('http://localhost:3000/api/article?search=' + query)
-            .then((resp) => {
-              return resp.json();
+    name: 'Search',
+    data () {
+        return {
+            searchquery: "",
+            results: [],
+        };
+    },
+    methods: {
+        search(query) {
+            fetch(process.env.ROOT_API + '/article?search=' + query)
+               .then((resp) => {
+                   return resp.json();
+                })
+                .then((respJson) => {
+                    console.log(respJson);
+                this._data.results = respJson;
             })
-            .then((respJson) => {
-              console.log(respJson);
-              this._data.results = respJson;
-            })
-
-          //this._data.results = dummyData; //replace this
       }
   },
 }

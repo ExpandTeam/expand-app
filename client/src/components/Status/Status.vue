@@ -5,7 +5,7 @@
     <h1 class="w3-center">ExpandApp Settings</h1>
     <p class="w3-center"><b>General</b></p>
     <a href="#" class="w3-bar-item w3-button">View Status</a>
-    <a href="#" class="w3-bar-item w3-button">Change Name</a>
+    <router-link to="/settings" class="w3-bar-item w3-button">Change Name</router-link>
   </div>
 
   <div style="margin-left:25%; margin-top:10vh;">
