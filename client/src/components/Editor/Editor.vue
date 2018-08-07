@@ -1,6 +1,11 @@
 <template>
-    <div>
-        <input type="text" v-model="title" placeholder="Insert title here..." />
+  <div>
+    <div class="w3-container w3-light-grey w3-display-middle" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); padding: 20px;">
+      <h1 class="w3-center">Main Editor</h1>
+      <em>All information will NEVER trace back to you, there is no privacy policy and nothing can be deleted.</em>
+      <br>
+      <br>
+        <input type="text" class="w3-input" v-model="title" placeholder="Insert title here..." />
         <quill-editor ref="myTextEditor"
                       v-model="content"
                       :options="editorOption"
@@ -9,9 +14,11 @@
         <!--
             <button class="cancelbutton" v-on:click="onCancel">Cancel</button>
         -->
-        <button class="savebutton" v-on:click="onSave">Create</button>
-        <p style="color: red">{{ error }}</p>
+        <br>
+        <button class="savebutton w3-button w3-green" style="display: block; margin: 0 auto;" v-on:click="onSave">Create</button>
+        <p style="w3-red">{{ error }}</p>
     </div>
+  </div>
 </template>
 
 <script>
@@ -63,12 +70,14 @@ export default {
                                                         emulateJSON: true,
                                                     }
                                                 ).then(() => {
+                                                    console.log('im feeling dense');
                                                     this.$router.push('/view/' + newContractInstance._address);
                                                 }).catch((err) => {
                                                     this._data.error = err.toString();
                                                 });
                                             }
                                         ).catch((err) => {
+                                            console.log('error:', err);
                                             this._data.error = err.toString();
                                         });
                                     }

@@ -10,7 +10,6 @@ const models = require('./models/models');
 
 const app = express();
 
-
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     dbName: "expand-cache",
