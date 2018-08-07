@@ -60,7 +60,7 @@ router.get('/article', (req, res) => {
     index.search(
         {
             query: req.query.search,
-            attributesToRetrieve: ['title', 'owner', '_id', 'body'],
+            attributesToRetrieve: ['title', 'owner', 'address', 'body'],
             hitsPerPage: 10,
         },
         function searchDone(err, content) {
@@ -72,7 +72,6 @@ router.get('/article', (req, res) => {
 
 
             const { hits } = content;
-            console.log(hits);
             res.status(200).json(hits.map((hit) => ({address: hit._id, owner: hit.owner, title: hit.title, body: hit.body})));
 
         }
@@ -90,31 +89,23 @@ router.post('/article/update', (req, res) => {
             body = Buffer.from(body).toString('utf8');
             Promise.all([contract.methods.title().call(), contract.methods.owner().call()])
                 .then((contractData) => {
-                    let newArticle = new Article({
-                        _id: address,
+                    let newArticle = {
+                        address: address,
                         body: h2p(body),
                         title: contractData[0],
                         owner: contractData[1],
-                    })
+                    }
 
-                    let upsertData = newArticle.toObject();
 
-                    Article.findByIdAndUpdate(newArticle._id, newArticle, {upsert: true}, ((err) => {
-                        if (err) {
+                    index.addObject(upsertData, (err) => {
+                        if(err){
                             console.log(err);
-                            res.status(500).send("newArticle could not be saved");
                         } else {
-                            console.log("Article added to database");
-                            index.addObject(upsertData, (err) => {
-                                if(err){
-                                    throw err
-                                } else {
-                                    console.log("Article added to algolia")
-                                }
-                            });
-                            res.status(200).json(body);
+                            console.log("Article added to algolia");
                         }
-                    }));
+                    });
+                    res.status(200).json(body);
+
                 })
                 .catch((err) => {
                     console.log(err);
