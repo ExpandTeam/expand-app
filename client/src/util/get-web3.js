@@ -11,7 +11,7 @@ let getWeb3 = new Promise(function (resolve, reject) {
         web3 = new Web3(web3js.currentProvider);
     } else {
         anonymous = true;
-        web3 = new Web3(new Web3.providers.HttpProvider(process.env.PROVIDER_URI));
+        web3 = new Web3(new Web3.providers.WebsocketProvider(process.env.PROVIDER_URI));
     }
     web3.eth.net.isListening().then((isConnected) => {
         resolve({
