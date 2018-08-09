@@ -5,22 +5,25 @@ import Web3 from 'web3';
 let getWeb3 = new Promise(function (resolve, reject) {
     // Check for injected web3 (mist/metamask)
     var web3js = window.web3;
+    let web3;
+    let anonymous = false;
     if (typeof web3js !== 'undefined') {
-        var web3 = new Web3(web3js.currentProvider);
-        web3.eth.net.isListening().then((isConnected) => {
-            resolve({
-                injectedWeb3: isConnected,
-                web3 () {
-                    return web3;
-                },
-            });
-        });
+        web3 = new Web3(web3js.currentProvider);
     } else {
-        // web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545')) GANACHE FALLBACK
-        reject(new Error('Unable to connect to Metamask'));
+        anonymous = true;
+        web3 = new Web3(new Web3.providers.HttpProvider(process.env.PROVIDER_URI));
     }
+    web3.eth.net.isListening().then((isConnected) => {
+        resolve({
+            anonymous,
+            injectedWeb3: isConnected,
+            web3 () {
+                return web3;
+            },
+        });
+    });
 })
-    .then(result => {
+    .then((result) => {
         return new Promise(function (resolve, reject) {
             // Retrieve network ID
             result.web3().eth.net.getNetworkType((err, networkId) => {
@@ -35,30 +38,41 @@ let getWeb3 = new Promise(function (resolve, reject) {
             });
         });
     })
-    .then(result => {
+    .then((result) => {
         return new Promise(function (resolve, reject) {
-            // Retrieve coinbase
-            result.web3().eth.getCoinbase((err, coinbase) => {
-                if (err) {
-                    reject(new Error('Unable to retrieve coinbase'));
-                } else {
-                    result = Object.assign({}, result, { coinbase });
-                    resolve(result);
-                }
-            });
+            if (!result.anonymous) {
+                // Retrieve coinbase
+                result.web3().eth.getCoinbase((err, coinbase) => {
+                    if (err) {
+                        reject(new Error('Unable to retrieve coinbase'));
+                    } else {
+                        if (!coinbase) {
+                            result.anonymous = true;
+                        }
+                        result = Object.assign({}, result, { coinbase });
+                        resolve(result);
+                    }
+                });
+            } else {
+                resolve(result);
+            }
         });
     })
-    .then(result => {
+    .then((result) => {
         return new Promise(function (resolve, reject) {
-            // Retrieve balance for coinbase
-            result.web3().eth.getBalance(result.coinbase, (err, balance) => {
-                if (err) {
-                    reject(new Error('Unable to retrieve balance for address: ' + result.coinbase));
-                } else {
-                    result = Object.assign({}, result, { balance });
-                    resolve(result);
-                }
-            });
+            if (!result.anonymous) {
+                // Retrieve balance for coinbase
+                result.web3().eth.getBalance(result.coinbase, (err, balance) => {
+                    if (err) {
+                        reject(new Error('Unable to retrieve balance for address: ' + result.coinbase));
+                    } else {
+                        result = Object.assign({}, result, { balance });
+                        resolve(result);
+                    }
+                });
+            } else {
+                resolve(result);
+            }
         });
     });
 

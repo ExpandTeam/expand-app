@@ -28,14 +28,19 @@ function registerWeb3Instance (state, payload) {
     web3Copy.isInjected = result.injectedWeb3;
     web3Copy.web3Instance = result.web3;
     web3Copy.bzz = new Buzz({ provider: process.env.SWARM_ENDPOINT });
+    web3Copy.anonymous = result.anonymous;
     state.web3 = web3Copy;
 }
 
 function getUserInfo () {
-    return fetch(process.env.ROOT_API + '/user?address=' + state.web3.coinbase)
-        .then((res) => {
-            return res.json();
-        });
+    if (!state.anonymous) {
+        return fetch(process.env.ROOT_API + '/user?address=' + state.web3.coinbase)
+            .then((res) => {
+                return res.json();
+            });
+    } else {
+        return null;
+    }
 }
 
 function setUserInfo (state, userInfo) {
@@ -43,6 +48,8 @@ function setUserInfo (state, userInfo) {
         state.user = {
             displayName: userInfo.username,
         };
+    } else if (state.anonymous) {
+        state.user = null;
     } else {
         state.user = {
             displayName: state.web3.coinbase,

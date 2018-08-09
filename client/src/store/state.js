@@ -7,6 +7,7 @@ let state = {
         balance: null,
         error: null,
         bzz: null,
+        anonymous: null,
     },
     contractInstance: null,
     user: {
