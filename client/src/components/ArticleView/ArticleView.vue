@@ -1,10 +1,15 @@
 <template>
-    <div v-if="web3.isInjected" class="w3-display-middle w3-container w3-light-grey w3-center" style="padding: 10px;">
-            <h2>{{ article.title }}</h2>
-            <p>by {{ article.author }}</p>
-            <div v-html="article.body"></div>
-        <h4>E: {{ article.eAmount }}</h4>
-        <button disabled v-on:click="giveExpand()">Give 1 ExpandCoin (soon)</button>
+    <div v-if="web3.isInjected">
+    <div class="w3-row w3-container w3-light-grey w3-center">
+            <h1 class="w3-xxxlarge" style="margin-bottom:0px;">{{ article.title }}</h1>
+            <h2 style="margin-top:0px;">by {{ article.author }}</h2>
+    </div>
+    <div class="w3-row w3-green w3-center">
+      <div v-html="article.body" class="w3-border w3-round" style="padding: 2em;"></div>
+      <br>
+      <button disabled v-on:click="giveExpand()" class="w3-button w3-light-grey">Cannot tip E ({{ article.eAmount }})</button>
+      <br><br>
+    </div>
     </div>
 </template>
 
