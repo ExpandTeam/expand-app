@@ -1,28 +1,14 @@
 <template>
 <div>
 
-  <div class="w3-sidebar w3-border w3-left w3-bar-block w3-light-grey" style="width:25%;">
-    <h1 class="w3-center">ExpandApp Settings</h1>
-    <p class="w3-center"><b>General</b></p>
-    <a href="#" class="w3-bar-item w3-button">View Status</a>
-    <router-link to="/settings" class="w3-bar-item w3-button">Change Name</router-link>
-  </div>
-
-  <div style="margin-left:25%; margin-top:10vh;">
-    <!-- header⚠️ -->
-    <header v-if="!web3.isInjected || web3.networkId != 'ropsten'" class="w3-container w3-orange w3-text-white w3-center">
-      <h1>Warning</h1>
-    </header>
-    <header v-else class="w3-container w3-green w3-text-white w3-center">
-      <h1>Ready</h1>
-    </header>
+  <div>
 
     <!-- left -->
-    <div class="w3-row w3-light-grey">
-      <div class="w3-half w3-container w3-light-grey w3-border-right">
+    <div class="w3-display-middle w3-light-grey" style="padding: 5rem;">
+      <div class="w3-container w3-light-grey">
         <h1 class="w3-center">Current Status</h1>
         <ul class="w3-ul">
-          <li class="">
+          <li>
             <h2 v-if="!web3.isInjected || web3.networkId != 'ropsten'" class="w3-center w3-red">Metamask ⚠️</h2>
             <h2 v-else class="w3-center w3-green">Metamask 🆗</h2>
             <ul class="w3-ul w3-light-grey">
@@ -36,16 +22,9 @@
           </li>
         </ul>
       </div>
-      <div class="w3-half w3-container w3-light-grey">
-        <h2 class="w3-center" v-on:click="getTransactions()">Transaction Log</h2>
-        <li v-for="(item, index) in getTransactions()" :key="index">
-            {{ item.message }}
-        </li>
-      </div>
     </div>
     <br>
     <br>
-    <h1 class="w3-center w3-text-grey" style="opacity: 0.4;">Nothing new after this point ¯\_(ツ)_/¯</h1>
   </div>
 </div>
 <!--

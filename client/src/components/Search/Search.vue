@@ -1,5 +1,5 @@
 <template>
-    <div class="w3-container w3-light-grey" style="padding: 10px; margin-top:10vh;">
+    <div class="w3-container w3-light-grey" style="padding: 3rem;">
         <form action="url" method="get">
             <input class="w3-input" type='text' v-model="searchquery" placeholder="search query"/>
             <br>
@@ -15,6 +15,7 @@
             </li>
         </ul>
     </div>
+
 </template>
 
 <style>

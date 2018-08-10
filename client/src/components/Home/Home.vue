@@ -1,11 +1,13 @@
 <template>
-  <div class="w3-container w3-black w3-display-middle" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); ">
-    <h1 class="w3-blue w3-center" style="padding: 5px;"><b>e x p a n d</b></h1>
-    <p class="w3-center">The most powerful website for posting articles.</p>
-    <em>Expand yourself.</em>
-    <br>
-    <br>
+  <div>
+  <div class="w3-display-middle w3-text-white w3-center" style="width:40rem;">
+    <h1><b>E X P A N D</b></h1>
+    <p>Join the largest community of <em>free</em> and anonymous jouranlists.</p>
+    <router-link to='/editor'><button href="/editor" class="w3-button w3-green w3-border w3-border-green">New post</button></router-link>
+    <button class="w3-button w3-border">Learn more</button>
   </div>
+
+</div>
 </template>
 
 <script>
@@ -17,4 +19,5 @@ export default {
         },
     },
 };
+
 </script>
