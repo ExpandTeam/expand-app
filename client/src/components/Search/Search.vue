@@ -14,6 +14,7 @@
                 </div>
             </li>
         </ul>
+        <span class="w3-right">Searches indexed by Algolia <i class="fab fa-algolia"></i></span>
     </div>
 
 </template>
