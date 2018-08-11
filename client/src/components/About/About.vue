@@ -4,7 +4,7 @@
  <h2 class="w3-center">meet the <b class="w3-blue" style="padding: 5px;">e x p a n d</b> team.</h2>
  <div class="w3-container w3-blue" style="padding: 10px; margin: 20px;">
     <div class="w3-quarter w3-center">
-       <img src="https://i.imgur.com/njETEMh.jpg" alt="Person" style="width: 10rem; height: 10rem; border-radius: 75px;">
+       <img src="https://i.imgur.com/njETEMh.jpg" alt="Person" style="width: 100%; max-width: 10rem; min-width:8rem; border-radius: 75px;">
        <div class="w3-container">
           <h4><b>Abraham Hamidi</b></h4>
           <p>ExpandTeam founder and lead full stack developer</p>
@@ -12,7 +12,7 @@
        </div>
     </div>
     <div class="w3-quarter w3-center">
-       <img src="https://pbs.twimg.com/profile_images/998330277570068480/y5VH9ac1_400x400.jpg" alt="Person" style="width: 10rem; height: 10rem;  border-radius: 75px;">
+       <img src="https://pbs.twimg.com/profile_images/998330277570068480/y5VH9ac1_400x400.jpg" alt="Person" style="width: 100%; max-width: 10rem; min-width:8rem; border-radius: 75px;">
        <div class="w3-container">
           <h4><b>Josiah Somani</b></h4>
           <p>ExpandTeam lead content strategist and frontend developer</p>
@@ -20,7 +20,7 @@
        </div>
     </div>
     <div class="w3-quarter w3-center">
-       <img src="https://cdn.discordapp.com/attachments/227522189438615554/474804098332491786/IMG_20180802_220055.jpg" alt="Person" style="width: 10rem; height: 10rem; border-radius: 75px;">
+       <img src="https://cdn.discordapp.com/attachments/227522189438615554/474804098332491786/IMG_20180802_220055.jpg" alt="Person" style="width: 100%; max-width: 10rem; min-width:8rem; border-radius: 75px;">
        <div class="w3-container">
           <h4><b>Nathan Peters</b></h4>
           <p>ExpandTeam interaction designer</p>
@@ -28,7 +28,7 @@
        </div>
     </div>
     <div class="w3-quarter w3-center">
-       <img src="https://i.imgur.com/MjXIAaT.jpg" alt="Person" style="width: 10rem; height: 10rem;  border-radius: 75px;">
+       <img src="https://i.imgur.com/MjXIAaT.jpg" alt="Person" style="width: 100%; max-width: 10rem; min-width:8rem; border-radius: 75px;">
        <div class="w3-container">
           <h4><b>Ryan Marquess</b></h4>
           <p>ExpandTeam lead backend developer and fullstack developer</p>
