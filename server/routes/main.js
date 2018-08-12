@@ -18,7 +18,9 @@ const Article = models.Article;
 const articleInfo = require('../../truffle/build/contracts/Article');
 let router = express.Router();
 
-let index = require('../algolia/algolia');
+const algoliasearch = require('algoliasearch')
+const client = algoliasearch(process.env.ALGOLIA_APPLICATION_ID, process.env.ALGOLIA_API_KEY);
+const index = client.initIndex('articles');
 
 router.post('/user/update', (req, res) => {
     const data = [{
@@ -105,7 +107,7 @@ router.post('/article/update', (req, res) => {
                             res.status(500).send("newArticle could not be saved");
                         } else {
                             console.log("Article added to database");
-                            index.addObject(upsertData, (err) => {
+                            index.addObject((upsertData), (err) => {
                                 if(err){
                                     throw err
                                 } else {
