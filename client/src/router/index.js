@@ -8,6 +8,7 @@ import ArticleView from '@/components/ArticleView/ArticleView';
 import Faucet from '@/components/Faucet/Faucet';
 import Status from '@/components/Status/Status';
 import Search from '@/components/Search/Search';
+import Profile from '@/components/Profile/Profile';
 
 Vue.use(Router);
 
@@ -52,6 +53,11 @@ export default new Router({
             path: '/search',
             name: 'Search',
             component: Search,
+        },
+        {
+            path: '/profile',
+            name: 'Profile',
+            component: Profile,
         },
     ],
 });
