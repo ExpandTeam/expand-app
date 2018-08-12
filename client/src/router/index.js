@@ -6,7 +6,6 @@ import Settings from '@/components/Settings/Settings';
 import Editor from '@/components/Editor/Editor';
 import ArticleView from '@/components/ArticleView/ArticleView';
 import Faucet from '@/components/Faucet/Faucet';
-import Status from '@/components/Status/Status';
 import Search from '@/components/Search/Search';
 import Profile from '@/components/Profile/Profile';
 
@@ -43,11 +42,6 @@ export default new Router({
             path: '/faucet',
             name: 'Faucet',
             component: Faucet,
-        },
-        {
-            path: '/status',
-            name: 'Status',
-            component: Status,
         },
         {
             path: '/search',
