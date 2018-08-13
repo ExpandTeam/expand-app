@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="word-wrap:break-word;">
   <div class="w3-container w3-center">
     <header class="w3-blue">
       <h1>{{displayName}}</h1>
@@ -34,10 +34,10 @@
         <div v-if="status === 3" class="w3-panel w3-pale-green w3-leftbar w3-border-green">
           <h3>Status OK!</h3>
         </div>
-        <div v-if="web3.networkId !== 'ropsten'" class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow">
+        <div v-if="web3.networkId !== 'ropsten'" class="w3-panel w3-pale-red w3-leftbar w3-border-red">
           <h3>Incorrect Network</h3>
           <p>
-            You're running on the Main Ethereum Network (or other network). We require the use of the Ropsten Test Network as our main decentralized article hosting service is in beta, as are we.
+            You're running on the Main Ethereum Network (or other network). We require the use of the Ropsten Test Network as our main decentralized article hosting service is in beta, as are we. We cannot provide service otherwise!
           </p>
         </div>
         <div v-if="web3.anonymous" class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow">
@@ -76,30 +76,6 @@ export default {
     user () {
         return this.$store.state.user;
     },
-    shortenedDisplayName () {
-        var username = this.$store.state.user.displayName;
-        var status = this.status;
-        if (status === 2 || status === 1) { // running anonymously
-            return 'Unauthenticated';
-        } else if (username === null) {
-            return this.web3.coinbase.substring(0, 8);
-        } else if (username.length > 8) {
-            return this.$store.state.user.displayName.substring(0, 8) + '...';
-        } else {
-            return username;
-        }
-    },
-    displayName () {
-        var username = this.$store.state.user.displayName;
-        var status = this.status;
-        if (status === 2 || status === 1) { // running anonymously
-            return 'Unauthenticated';
-        } else if (username === null) { // don't think we should get to here - but we'll fall back to the coinbase string
-            return this.web3.coinbase.substring(0, 8);
-        } else {
-            return username;
-        }
-    },
     status () {
         // status codes:
         // 0 - fatal error, no web3 injection available - metamask does not exist
@@ -115,6 +91,38 @@ export default {
             return 2;
         } else {
             return 3;
+        }
+    },
+    displayName () {
+        var username = this.user.displayName;
+        var status = this.status;
+        if (status === 0) { // could not inject
+            return 'Error';
+        } else if (status === 1 || status === 2) { // anon mode or bad network
+            return 'Unauthenticated';
+        } else if (username === null) { // ok, but have no username
+            return this.web3.coinbase.substring(0, 8);
+        } else if (username === '') {
+            return '(empty)';
+        } else {
+            return username;
+        }
+    },
+    shortenedDisplayName () {
+        var username = this.user.displayName;
+        var status = this.status;
+        if (status === 0) { // could not inject
+            return 'Error';
+        } else if (status === 1 || status === 2) { // anon mode or bad network
+            return 'Unauthenticated';
+        } else if (username === null) { // ok, but have no username
+            return this.web3.coinbase.substring(0, 8) + '...';
+        } else if (username === '') {
+            return '(empty)';
+        } else if (username.length >= 8) { // we ok, just clip the name
+            return username.substring(0, 8) + '...';
+        } else {
+            return username;
         }
     },
   },
