@@ -1,6 +1,5 @@
 <template>
 <div>
-  <link rel='stylesheet' href='./static/navigation.css'>
   <div>
   <nav class='w3-text-white'>
     <router-link to='/' class='w3-button'>Home</router-link>

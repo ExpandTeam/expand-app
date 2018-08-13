@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <link rel="stylesheet" href="./static/w3.css">
+    <link rel="stylesheet" href="./static/w3.min.css">
     <Navigation />
     <router-view />
   </div>
@@ -24,3 +24,7 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+@import 'assets/css/global.css';
+</style>
