@@ -1,16 +1,23 @@
 <template>
-    <div v-if="web3.isInjected">
-    <div class="w3-row w3-container w3-light-grey w3-center">
-            <h1 class="w3-xxxlarge" style="margin-bottom:0px;">{{ article.title }}</h1>
-            <h2 style="margin-top:0px;">by {{ article.author }}</h2>
-    </div>
-    <div class="w3-row w3-green w3-center">
-      <div v-html="article.body" class="w3-border w3-round" style="padding: 2em;"></div>
-      <br>
-      <button disabled v-on:click="giveExpand()" class="w3-button w3-light-grey">Cannot tip E ({{ article.eAmount }})</button>
-      <br><br>
-    </div>
-    </div>
+<!-- container header -->
+<div v-if="web3.isInjected">
+  <!-- header -->
+  <div class="w3-row w3-container w3-light-grey w3-center">
+    <h1 class="w3-xxxlarge">{{ article.title }}</h1>
+    <h2 style="margin-top:0px;">by {{ article.author }}</h2>
+  </div>
+  <!-- end header -->
+
+  <!-- body -->
+  <div class="w3-row w3-green w3-center">
+    <div v-html="article.body" class="w3-border w3-round" style="padding: 2em;"></div>
+    <br>
+    <button disabled v-on:click="giveExpand()" class="w3-button w3-light-grey">Cannot tip E ({{ article.eAmount }})</button>
+    <br><br>
+  </div>
+  <!-- end body -->
+</div>
+<!-- container end -->
 </template>
 
 <script>
@@ -51,10 +58,14 @@ export default {
 
             articleContract.methods.owner().call().then((author) => {
                 expandTokenContract.methods.approve(author, Math.pow(10, 18))
-                    .send({ from: this.web3.coinbase })
+                    .send({
+                        from: this.web3.coinbase,
+                    })
                     .then((res) => {
                         articleContract.methods.give(Math.pow(10, 18), process.env.EXPAND_CONTRACT_ADDRESS)
-                            .send({ from: this.web3.coinbase })
+                            .send({
+                                from: this.web3.coinbase,
+                            })
                             .then((res) => {
                                 console.log(res);
                             }).catch((err) => {

@@ -1,3 +1,4 @@
+/* display background */
 html {
     background:
         linear-gradient(
@@ -9,4 +10,15 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+/* basic box shadow */
+.shadow {
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); padding: 20px;
+}
+
+/* display block element in the center of container */
+.block-center {
+  margin: 0 auto;
+  display: block;
 }
