@@ -1,13 +1,15 @@
 <template>
-    <div class="w3-container w3-display-middle w3-light-grey" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); padding: 30px;">
-        <h2 class="w3-center">Settings</h2>
-        <div>
-            <label>Display Name</label>
-            <input class="w3-input" type="text" v-model="displayName" />
-        </div>
-        <br>
-        <button v-on:click="updateMappings" class="w3-button w3-green" style="margin: 0 auto; display: block;">Update</button>
-    </div>
+<!-- center container with shadow -->
+<div class="w3-container w3-display-middle w3-light-grey shadow">
+  <h2 class="w3-center">Settings</h2>
+  <div>
+    <label>Display Name</label>
+    <input class="w3-input" type="text" v-model="displayName" />
+  </div>
+  <br>
+  <button v-on:click="updateMappings" class="w3-button w3-green block-center">Update</button>
+</div>
+<!-- end container -->
 </template>
 
 <script>
