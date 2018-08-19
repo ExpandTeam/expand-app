@@ -7,7 +7,7 @@
     <div class="w3-row w3-green w3-center">
       <div v-html="article.body" class="w3-border w3-round" style="padding: 2em;"></div>
       <br>
-      <button disabled v-on:click="giveExpand()" class="w3-button w3-light-grey">Cannot tip E ({{ article.eAmount }})</button>
+      <button v-on:click="giveExpand()" class="w3-button w3-light-grey">Give 1 Expand ({{ article.eAmount }})</button>
       <br><br>
     </div>
     </div>
@@ -49,21 +49,20 @@ export default {
             const expandTokenContract = new web3Instance.eth.Contract(expandTokenInfo.abi, process.env.EXPAND_CONTRACT_ADDRESS);
             const articleContract = new web3Instance.eth.Contract(articleInfo.abi, this.$route.params.address);
 
-            articleContract.methods.owner().call().then((author) => {
-                expandTokenContract.methods.approve(author, Math.pow(10, 18))
-                    .send({ from: this.web3.coinbase })
-                    .then((res) => {
-                        articleContract.methods.give(Math.pow(10, 18), process.env.EXPAND_CONTRACT_ADDRESS)
-                            .send({ from: this.web3.coinbase })
-                            .then((res) => {
-                                console.log(res);
-                            }).catch((err) => {
-                                console.error(err);
-                            });
-                    }).catch((err) => {
-                        console.log(err);
-                    });
-            });
+            const amount = 1;
+            expandTokenContract.methods.approve(this.$route.params.address, amount * Math.pow(10, 18))
+                .send({ from: this.web3.coinbase })
+                .then((res) => {
+                    articleContract.methods.give(amount * Math.pow(10, 18), process.env.EXPAND_CONTRACT_ADDRESS)
+                        .send({ from: this.web3.coinbase })
+                        .then((res) => {
+                            console.log(res);
+                        }).catch((err) => {
+                            console.error(err);
+                        });
+                }).catch((err) => {
+                    console.log(err);
+                });
         },
         updateArticle () {
             const web3 = this.$store.state.web3;
