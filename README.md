@@ -1,6 +1,18 @@
 # expand-app
 
-Full-stack source for the expand app, an anonymous and secure blockchain based journalism service.
+Full-stack source for the Expand app, an anonymous and secure blockchain based journalism service.
+
+**The views and opinions expressed by the commit author(s) may not reflect their political/religious/etc views or views of other users.**
+
+# about
+
+Codename Expand is a website promoting anonymous and secure journalism (mainly) using new blockchain-based technologies. Originally developed at Horizons School of Technology during a three-day period, expand has grown into a ~~worldwide phenomenon~~ fun and constantly developing project.
+
+## how do we use expand?
+
+To use Expand in production, go to the [`expand.land` website.](https://expand.land). You must install [`Metamask`](https://metamask.io) to be able to properly use the product and post. More instructions are available on the website.
+
+To use Expand for development, see below.
 
 # installation
 
