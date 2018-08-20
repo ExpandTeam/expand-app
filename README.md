@@ -10,7 +10,7 @@ Codename Expand is a website promoting anonymous and secure journalism (mainly) 
 
 ## how do we use expand?
 
-To use Expand in production, go to the [`expand.land` website.](https://expand.land). You must install [`Metamask`](https://metamask.io) to be able to properly use the product and post. More instructions are available on the website.
+To use Expand in production, go to the [`expand.land` website](https://expand.land). You must install [`Metamask`](https://metamask.io) to be able to properly use the product and post. More instructions are available on the website.
 
 To use Expand for development, see below.
 
