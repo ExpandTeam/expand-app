@@ -45,10 +45,16 @@ This will install all required project files on to your computer.
 ```sh
 # install packages
 
+cd client
+
+npm install
+
+cd server
+
 npm install
 ```
 
-This will install all required dependencies to your computer as well.
+This will install all required dependencies for the client and server to your computer as well.
 
 ### eslint global install (optional)
 ```sh
