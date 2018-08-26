@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import state from './state';
 import getWeb3 from '../util/get-web3';
 import Buzz from '@web3/buzz';
+import { analyticsMiddleware } from 'vue-analytics';
 
 Vue.use(Vuex);
 
@@ -62,4 +63,7 @@ export const store = new Vuex.Store({
     state,
     mutations: { registerWeb3Instance, setUserInfo },
     actions: { registerWeb3, getUserInfo },
+    plugins: [
+        analyticsMiddleware,
+    ],
 });
