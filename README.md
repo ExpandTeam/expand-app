@@ -19,6 +19,12 @@ To use Expand for development, see below.
 Installing `expand-app` for development is most simple. We use [`npm`](https://www.npmjs.com/get-npm) for package management, [`git`](https://git-scm.com/downloads) for collaborative mangement and [`nodejs`](https://nodejs.org) as our main programming language, all of which you must install to use `expand-app`.
 Below is the way to install all required files for `expand-app`.
 
+## external dependencies (required)
+
+Development of Expand on macOS requires [`XCode`](https://itunes.apple.com/us/app/xcode/id497799835?mt=12) to properly run, build and install dependencies for development. Install and run XCode (and download the add'l components once it asks) from the *App Store* to properly build the server and client.
+
+
+
 ## npm and git installation (required)
 
 ```sh
