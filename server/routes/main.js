@@ -63,7 +63,6 @@ router.get('/article', (req, res) => {
         {
             query: req.query.search,
             attributesToRetrieve: ['title', 'owner', '_id', 'body'],
-            hitsPerPage: 10,
         },
         function searchDone(err, content) {
             if (err) {
