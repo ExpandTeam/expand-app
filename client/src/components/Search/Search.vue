@@ -1,21 +1,26 @@
 <template>
+  <div>
     <div class="w3-container w3-light-grey" style="padding: 3rem;">
-        <form action="url" method="get">
-            <input class="w3-input" type='text' v-model="searchquery" placeholder="search query"/>
-            <br>
-            <button class="w3-button w3-green" type='button' v-on:click="search(searchquery)">Search</button>
-        </form>
+      <input class="w3-input" type='text' v-model="searchquery" v-on:keyup="search(searchquery)" placeholder="search query"/>
+      <br>
+      <button class="w3-button w3-green" type='button' v-on:click="search(searchquery)">Search</button>
+      <button class="w3-button w3-blue w3-right" type='button' v-on:click="searchquery=' '; search(searchquery)">View All Posts</button>
         <ul class="w3-ul">
-            <li v-for="{author, title, address} in results" v-bind:key="address">
-                <div class="element">
-                    <h5>Author: {{author}}</h5>
-                    <h5><em>{{title}}</em></h5>
+            <div class="w3-center w3-container w3-light-grey" v-if="searchquery== ''">
+                <h1>There's nothing here.</h1>
+                <p>Try searching something!</p>
+            </div>
+            <li v-if="searchquery !== ''" v-for="{owner, title, address} in results" v-bind:key="address">
+                <div class="w3-container">
+                    <h5>By: <small><code>{{owner}}</code></small></h5>
+                    <h5><em>{{title}} {{author}}</em></h5>
                     <router-link :to="{path:'view/' + address}"> view </router-link>
                 </div>
             </li>
         </ul>
         <span class="w3-right">Searches indexed by Algolia <i class="fab fa-algolia"></i></span>
     </div>
+  </div>
 
 </template>
 
