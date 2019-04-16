@@ -39,9 +39,9 @@
  <h2 class="w3-center">why <b class="w3-blue" style="padding: 5px;">e x p a n d</b></h2>
 <div class="w3-center w3-blue" style="padding: 20px; margin: 20px;">
   <br>
-  <p>Because we want people to be <b>free.</b> Post anything and everything and it is never taken down! EVER.
-    Nothing can be taken down because we use the <b>holy duality</b> to make sure we stay secure and uneditable - Swarm and Ethereum. It's a simple but efficent way to do things.<br>
-    We believe in free speech for ALL. That's why we made our project open-source on GitHub. <em>View it here.</em> By the way! Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among sentences is what constitutes a paragraph. A paragraph is defined as “a group of sentences or a single sentence that forms a unit” (Lunsford and Connors 116). Length and appearance do not determine whether a section in a paper is a paragraph. For instance, in some styles of writing, particularly journalistic styles, a paragraph can be just one sentence long. Ultimately, a paragraph is a sentence or group of sentences that support one main idea. In this handout, we will refer to this as the. Ok so this a long sentence hopefully to be... something else. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  <p>We believe in <b>freedom of speech.</b> Post anything and everything and it is <b>never</b> taken down.
+    Nothing can be taken down because we use the "<b>holy duality</b> of Ethereum" to make sure we stay secure and uneditable. The duality? Swarm and Ethereum. This iconic duo offers a simple yet efficent way to do things.<br>
+    We believe in free speech. That's why we used the "duality" <b>and</b> made our project open-source on <a href="https://github.com/ExpandTeam/expand-app">GitHub.</a>
   </p>
 </div>
 </div>
