@@ -40,7 +40,7 @@
 <div class="w3-center w3-blue" style="padding: 20px; margin: 20px;">
   <br>
   <p>We believe in <b>freedom of speech.</b> Post anything and everything and it is <b>never</b> taken down.
-    Nothing can be taken down because we use the "<b>holy duality</b> of Ethereum" to make sure we stay secure and uneditable. The duality? Swarm and Ethereum. This iconic duo offers a simple yet efficent way to do things.<br>
+    Nothing can be taken down because we use the "<b>holy duality</b> of Ethereum" to make sure we stay secure and uneditable. The duality? Swarm and Ethereum. This iconic duo offers a simple yet efficient way to do things.<br>
     We believe in free speech. That's why we used the "duality" <b>and</b> made our project open-source on <a href="https://github.com/ExpandTeam/expand-app">GitHub.</a>
   </p>
 </div>
