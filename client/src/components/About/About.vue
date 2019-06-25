@@ -12,11 +12,11 @@
        </div>
     </div>
     <div class="w3-quarter w3-center">
-       <img src="https://pbs.twimg.com/profile_images/998330277570068480/y5VH9ac1_400x400.jpg" alt="Person" style="width: 10rem; height: 10rem;  border-radius: 75px;">
+       <img src="https://avatars1.githubusercontent.com/u/41712897?s=460&v=4" alt="Person" style="width: 10rem; height: 10rem;  border-radius: 75px;">
        <div class="w3-container">
           <h4><b>Josiah Somani</b></h4>
           <p>ExpandTeam lead content strategist and frontend developer</p>
-          <em>"eslint is bad"</em> <br> <br>
+          <em>Still editing expand after 1 year</em> <br> <br>
        </div>
     </div>
     <div class="w3-quarter w3-center">
