@@ -1,4 +1,4 @@
-pragma solidity 0.4.24;
+pragma solidity 0.5.8;
 
 import './ExpandToken.sol';
 
@@ -8,7 +8,7 @@ contract Article {
     string public hash;
     uint256 public amount;
 
-    constructor(string _title, string _hash) public {
+    constructor(string memory _title, string memory _hash) public {
         owner = msg.sender;
         title = _title;
         hash = _hash;
@@ -16,14 +16,14 @@ contract Article {
     }
 
     function kill() public {
-        if (msg.sender == owner) {
-            selfdestruct(owner);
-        }
+        require(msg.sender == owner);
+        selfdestruct(msg.sender);
     }
 
     function give(uint256 _amount, ExpandToken token) public returns (bool) {
-        token.transferFrom(msg.sender, owner, _amount);
         amount+=_amount;
+        token.transferFrom(msg.sender, owner, _amount);
         return true;
     }
 }
+
