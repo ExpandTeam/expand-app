@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@web3/buzz": "0.0.1",
-    "node-sass": "^4.9.3",
+    "node-sass": "^7.0.0",
     "sass-loader": "^7.1.0",
     "vue": "^2.5.2",
     "vue-analytics": "^5.15.0",
